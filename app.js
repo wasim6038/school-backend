@@ -2,7 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
+import apiRoutes from './routes/index.js';
 import logger from './utils/logger.js';
+import { globalLimiter } from './middlewares/rateLimiter.middleware.js';
 
 const app = express();
 
@@ -23,10 +25,13 @@ app.use(
     credentials: true
   })
 );
+app.use(globalLimiter);
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
+
+app.use('/api/v1', apiRoutes);
 
 app.get('/', (_req, res) => {
   res.status(200).json({ success: true, message: 'School Website API is running' });
