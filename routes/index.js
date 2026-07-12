@@ -4,6 +4,7 @@ import authRoutes from './auth.routes.js';
 import userRoutes from './user.routes.js';
 import facultyRoutes from './faculty.routes.js';
 import admissionRoutes from './admission.routes.js';
+import contactRoutes from './contact.routes.js';
 
 
 const router = Router();
@@ -14,6 +15,7 @@ router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
 router.use('/faculty', facultyRoutes);
 router.use('/admissions', admissionRoutes);
+router.use('/contact', contactRoutes);
 
 
 export default router;
