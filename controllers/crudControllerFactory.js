@@ -56,7 +56,13 @@ const createCrudController = (model, { searchFields = [], entityName = 'Item', b
   });
 
   const create = asyncHandler(async (req, res) => {
-    const item = await repo.create({ ...req.body, ...(req.uploadedFile || {}) });
+    const data = { ...req.body };
+
+    data.photo = {
+      url: req.file.path,
+      publicId: req.file.filename,
+    };
+    const item = await repo.create(data);
     new ApiResponse(201, item, `${entityName} created successfully`).send(res);
   });
 
