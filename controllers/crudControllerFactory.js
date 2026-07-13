@@ -14,8 +14,9 @@ import BaseRepository from '../utils/BaseRepository.js';
  * @param {String[]} options.searchFields - fields eligible for free-text search
  * @param {String} options.entityName - human readable name for messages
  * @param {Function} options.buildFilter - (req) => additional mongo filter object
+ * @param {String} options.uploadField - name of the field to upload files to
  */
-const createCrudController = (model, { searchFields = [], entityName = 'Item', buildFilter } = {}) => {
+const createCrudController = (model, { searchFields = [], entityName = 'Item', buildFilter, uploadField = null } = {}) => {
   const repo = new BaseRepository(model);
 
   const list = asyncHandler(async (req, res) => {
@@ -59,7 +60,7 @@ const createCrudController = (model, { searchFields = [], entityName = 'Item', b
     const data = { ...req.body };
 
     if (req.file) {
-      data.photo = {
+      data[uploadField] = {
         url: req.file.path,
         publicId: req.file.filename,
       };
@@ -72,7 +73,7 @@ const createCrudController = (model, { searchFields = [], entityName = 'Item', b
     const data = { ...req.body };
 
     if (req.file) {
-      data.photo = {
+      data[uploadField] = {
         url: req.file.path,
         publicId: req.file.filename,
       };

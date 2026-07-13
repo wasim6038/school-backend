@@ -3,7 +3,8 @@ import createCrudController from './crudControllerFactory.js';
 
 const controller = createCrudController(Faculty, {
   searchFields: ['name', 'designation', 'department'],
-  entityName: 'Faculty member'
+  entityName: 'Faculty member',
+  uploadField: 'photo'
 });
 
 export default controller;

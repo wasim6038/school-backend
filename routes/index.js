@@ -7,7 +7,11 @@ import admissionRoutes from './admission.routes.js';
 import contactRoutes from './contact.routes.js';
 import eventRoutes from './event.routes.js';
 import noticeRoutes from './notice.routes.js';
-
+import galleryRoutes from './gallery.routes.js';
+import newsRoutes from './news.routes.js';
+import siteRoutes from './site.routes.js';
+import pageRoutes from './page.routes.js';
+import uploadRoutes from './upload.routes.js';
 
 const router = Router();
 
@@ -20,6 +24,10 @@ router.use('/admissions', admissionRoutes);
 router.use('/contact', contactRoutes);
 router.use('/events', eventRoutes);
 router.use('/notices', noticeRoutes);
-
+router.use('/gallery', galleryRoutes);
+router.use('/news', newsRoutes);
+router.use('/site', siteRoutes);
+router.use('/pages', pageRoutes);
+router.use('/upload', uploadRoutes);
 
 export default router;

@@ -6,7 +6,7 @@ const eventSchema = new mongoose.Schema(
     title: { type: String, required: true, trim: true },
     slug: { type: String, unique: true, index: true },
     description: { type: String, required: true },
-    photo: {
+    coverImage: {
       url: { type: String, default: '' },
       publicId: { type: String, default: '' }
     },

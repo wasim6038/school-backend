@@ -5,7 +5,8 @@ import ApiResponse from '../utils/ApiResponse.js';
 
 const controller = createCrudController(Event, {
   searchFields: ['title', 'description', 'location'],
-  entityName: 'Event'
+  entityName: 'Event',
+  uploadField: 'coverImage'
 });
 
 // GET /events/upcoming - convenience endpoint for homepage widgets
