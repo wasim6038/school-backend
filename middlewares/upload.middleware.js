@@ -36,4 +36,5 @@ const buildUploader = (folder, { allowDocs = false, maxSizeMB = 1 } = {}) => {
 };
 
 export const uploadFacultyPhoto = buildUploader('faculty');
+export const uploadEventImage = buildUploader('events');
 export const uploadAdmissionDocs = buildUploader('admissions', { allowDocs: true, maxSizeMB: 5 });

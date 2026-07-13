@@ -58,16 +58,27 @@ const createCrudController = (model, { searchFields = [], entityName = 'Item', b
   const create = asyncHandler(async (req, res) => {
     const data = { ...req.body };
 
-    data.photo = {
-      url: req.file.path,
-      publicId: req.file.filename,
-    };
+    if (req.file) {
+      data.photo = {
+        url: req.file.path,
+        publicId: req.file.filename,
+      };
+    }
     const item = await repo.create(data);
     new ApiResponse(201, item, `${entityName} created successfully`).send(res);
   });
 
   const update = asyncHandler(async (req, res) => {
-    const item = await repo.updateById(req.params.id, { ...req.body, ...(req.uploadedFile || {}) });
+    const data = { ...req.body };
+
+    if (req.file) {
+      data.photo = {
+        url: req.file.path,
+        publicId: req.file.filename,
+      };
+    }
+
+    const item = await repo.updateById(req.params.id, data);
     if (!item) throw ApiError.notFound(`${entityName} not found`);
     new ApiResponse(200, item, `${entityName} updated successfully`).send(res);
   });
