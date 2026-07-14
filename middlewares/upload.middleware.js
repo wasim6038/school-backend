@@ -39,5 +39,7 @@ export const uploadFacultyPhoto = buildUploader('faculty');
 export const uploadEventImage = buildUploader('events');
 export const uploadGalleryMedia = buildUploader('gallery');
 export const uploadNewsImage = buildUploader('news');
+export const uploadTestimonialPhoto = buildUploader('testimonials');
 export const uploadAdmissionDocs = buildUploader('admissions', { allowDocs: true, maxSizeMB: 5 });
+export const uploadDownloadFile = buildUploader('downloads', { allowDocs: true, maxSizeMB: 10 });
 export const uploadPageAsset = buildUploader('pages', { allowDocs: false });

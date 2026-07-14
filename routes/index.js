@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import authRoutes from './auth.routes.js';
 import userRoutes from './user.routes.js';
+import dashboardRoutes from './dashboard.routes.js';
 import facultyRoutes from './faculty.routes.js';
 import admissionRoutes from './admission.routes.js';
 import contactRoutes from './contact.routes.js';
@@ -12,6 +13,8 @@ import newsRoutes from './news.routes.js';
 import siteRoutes from './site.routes.js';
 import pageRoutes from './page.routes.js';
 import uploadRoutes from './upload.routes.js';
+import downloadRoutes from './download.routes.js';
+import testimonialRoutes from './testimonial.routes.js';
 
 const router = Router();
 
@@ -19,6 +22,7 @@ router.get('/health', (_req, res) => res.status(200).json({ success: true, messa
 
 router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
+router.use('/dashboard', dashboardRoutes);
 router.use('/faculty', facultyRoutes);
 router.use('/admissions', admissionRoutes);
 router.use('/contact', contactRoutes);
@@ -29,5 +33,7 @@ router.use('/news', newsRoutes);
 router.use('/site', siteRoutes);
 router.use('/pages', pageRoutes);
 router.use('/upload', uploadRoutes);
+router.use('/downloads', downloadRoutes);
+router.use('/testimonials', testimonialRoutes);
 
 export default router;

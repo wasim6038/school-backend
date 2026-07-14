@@ -63,6 +63,8 @@ const createCrudController = (model, { searchFields = [], entityName = 'Item', b
       data[uploadField] = {
         url: req.file.path,
         publicId: req.file.filename,
+        fileName: req.file.originalname,
+        fileSize: req.file.size
       };
     }
     const item = await repo.create(data);
@@ -76,6 +78,8 @@ const createCrudController = (model, { searchFields = [], entityName = 'Item', b
       data[uploadField] = {
         url: req.file.path,
         publicId: req.file.filename,
+        fileName: req.file.originalname,
+        fileSize: req.file.size
       };
     }
 
