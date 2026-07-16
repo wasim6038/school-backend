@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import compression from 'compression';
+import morgan from 'morgan';
 
 import apiRoutes from './routes/index.js';
 import logger from './utils/logger.js';
